@@ -54,11 +54,11 @@ def check_if_done(guesses, word):
 
 
 word = "test"
-wrong_guesses = 0
+wrong_guesses = []
 all_guesses = []
 done = False
 
-while not done and wrong_guesses < num_wrong_guesses_allowed:
+while not done and len(wrong_guesses) < num_wrong_guesses_allowed:
     draw_hangman(wrong_guesses)
     guess = input("Guess a letter: ")
     all_guesses.append(guess)
@@ -67,7 +67,7 @@ while not done and wrong_guesses < num_wrong_guesses_allowed:
         done = check_if_done(all_guesses, word)
     else:
         print("Nope, sorry!")
-        wrong_guesses = wrong_guesses + 1
+        wrong_guesses.append(guess)
 
 if wrong_guesses == num_wrong_guesses_allowed:
     draw_hangman(wrong_guesses)
